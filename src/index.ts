@@ -11,11 +11,10 @@ const users = new Block(ud)
 users.remove()
 
 console.log(users.get())
-
 console.log(users.get(1))
 
-users.loop((rd:blockType, i:number) => {
-    console.log(rd, i)
+users.loop(({data}:blockType, i:number) => {
+    console.log(data, i)
 })
 
 //set--, remove--, map--, get--, blocks--
