@@ -113,7 +113,7 @@ export class Block {
     }
   }
 
-  /**@method remove block with index or hash to remove block from block, or the last added block. 
+  /**@method remove block with index or hash to remove block from blocks, or the last added block. 
    * @example data.remove() remove last, data.remove(index) remove with index, data.remove(hash) remove with hash. */
   remove(option:number|string|null=null) {
     if (option !== null && typeof option === "number") {
@@ -140,30 +140,31 @@ export class Block {
     }
   }
 
-    /**@method remove block with index or hash to remove block from block, or the last added block. 
-   * @example data.remove() remove last, data.remove(index) remove with index, data.remove(hash) remove with hash. */
+    /**@method get block with index or hash to get block from blocks, or return all the blocks 
+   * @example data.get() get all datas, data.get(index) get with index, data.get(hash) get with hash. */
   get(option:number|string|null=null) {
     if (option !== null && typeof option === "number") {
       const index = option
       const exist = this.blocks.filter((_, i) => i === index)
-      const others = this.blocks.filter((_, i) => i !== index)
 
       if (exist.length !== 0) {
-        this.blocks = others
+        return exist[0]
+      } else {
+        return "no block found"
       }
 
     } else if (option !== null && typeof option === "string") {
       const hash = option
       const exist = this.blocks.filter((block, i) => block?.hash === hash)
-      const others = this.blocks.filter((block, i) => block.hash !== hash)
 
       if (exist.length !== 0) {
-        this.blocks = others
+        return exist[0]
+      } else {
+        return "no block found"
       }
 
     } else if (option === null && typeof option === "object") {
-      const d = this.blocks.pop()
-      return d
+      return this.blocks
     }
   }
 
