@@ -1,5 +1,5 @@
 
-import { Block } from '../lib/main'
+import { Block, blockType } from '../lib/main'
 
 const ud = [
     { id: 1, name: "john" },
@@ -11,4 +11,9 @@ const users = new Block(ud)
 users.remove()
 
 console.log(users.blocks)
-//set--, remove--, remove from index--, map, filter, blocks--
+
+users.loop((rd:blockType, i:number) => {
+    console.log(rd, i)
+})
+
+//set--, remove--, remove from index--, map--, get, blocks--
