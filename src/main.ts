@@ -9,4 +9,4 @@ const ud = [
 
 const users = new Block([])
 console.log(users)
-//add, remove, remove from index, map, filter, blocks--
+//add--, remove, remove from index, map, filter, blocks--
