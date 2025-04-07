@@ -85,7 +85,7 @@ export class Block {
       if (typeof data === "string") {
         const arrData = [data];
         const nd: blockType[] = [];
-        arrData?.flatMap((d: any, i: number) => {
+        arrData?.flatMap((d: any) => {
           const obj: blockType = {
             hash: `${Math.floor(Math.random() * 999999999999)}`,
             timeStamp: new Date().toDateString(),
@@ -98,7 +98,7 @@ export class Block {
         this.blocks = [...this.blocks, ...nd];
       } else if (typeof data === "object") {
         const nd: blockType[] = [];
-        data?.flatMap((d: any, i: number) => {
+        data?.flatMap((d: any) => {
           const obj: blockType = {
             hash: `${Math.floor(Math.random() * 999999999999)}`,
             timeStamp: new Date().toDateString(),
@@ -127,8 +127,8 @@ export class Block {
 
     } else if (option !== null && typeof option === "string") {
       const hash = option
-      const exist = this.blocks.filter((block, i) => block?.hash === hash)
-      const others = this.blocks.filter((block, i) => block.hash !== hash)
+      const exist = this.blocks.filter((block) => block?.hash === hash)
+      const others = this.blocks.filter((block) => block.hash !== hash)
 
       if (exist.length !== 0) {
         this.blocks = others
@@ -155,7 +155,7 @@ export class Block {
 
     } else if (option !== null && typeof option === "string") {
       const hash = option
-      const exist = this.blocks.filter((block, i) => block?.hash === hash)
+      const exist = this.blocks.filter((block) => block?.hash === hash)
 
       if (exist.length !== 0) {
         return exist[0]
