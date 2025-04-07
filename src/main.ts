@@ -7,6 +7,8 @@ const ud = [
     {id: 3, name: "sam"}
 ]
 
-const users = new Block([])
-console.log(users)
-//add--, remove, remove from index, map, filter, blocks--
+const users = new Block(ud)
+users.remove()
+
+console.log(users.blocks)
+//set--, remove--, remove from index--, map, filter, blocks--

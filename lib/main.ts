@@ -64,7 +64,7 @@ export class Block {
     return this;
   }
 
-  add(data: any, text: string | null = null) {
+  set(data: any, text: string | null = null) {
     if (data.length === undefined) {
       const arrData = [data];
       const nd: block[] = [];
@@ -107,6 +107,31 @@ export class Block {
 
         this.blocks = [...this.blocks, ...nd];
       }
+    }
+  }
+
+  remove(option:number|string|null=null) {
+    if (option !== null && typeof option === "number") {
+      const index = option
+      const exist = this.blocks.filter((_, i) => i === index)
+      const others = this.blocks.filter((_, i) => i !== index)
+
+      if (exist.length !== 0) {
+        this.blocks = others
+      }
+
+    } else if (option !== null && typeof option === "string") {
+      const hash = option
+      const exist = this.blocks.filter((block, i) => block?.hash === hash)
+      const others = this.blocks.filter((block, i) => block.hash !== hash)
+
+      if (exist.length !== 0) {
+        this.blocks = others
+      }
+
+    } else if (option === null && typeof option === "object") {
+      const d = this.blocks.pop()
+      return d
     }
   }
 }
